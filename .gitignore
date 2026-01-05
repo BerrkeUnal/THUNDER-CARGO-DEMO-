@@ -1,0 +1,34 @@
+# --- DATABASE SECRETS (EN KRİTİK KISIM) ---
+# MySQL şifrelerini içeren dosyayı asla GitHub'a gönderme
+.streamlit/secrets.toml
+
+# --- PYTHON ---
+# Sanal ortam klasörü (venv) GitHub'a yüklenmez, her kullanıcı kendi venv'ini kurar
+venv/
+.venv/
+env/
+bin/
+lib/
+# Python çalışma dosyaları ve önbelleği
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+
+# --- MACOS SYSTEM FILES ---
+# Mac'in klasör görünümü için oluşturduğu gereksiz gizli dosyalar
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- IDEs & TOOLS ---
+# VS Code veya PyCharm ayar dosyaları
+.vscode/
+.idea/
+.env
+
+# --- STREAMLIT ---
+# Streamlit'in yerel çalışma dosyaları
+static/
