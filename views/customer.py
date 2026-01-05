@@ -70,3 +70,38 @@ def show_invoices():
         st.dataframe(pd.DataFrame(invoices), use_container_width=True)
     else:
         st.info("No invoices found associated with this account.")
+
+
+def show_courier_request():
+    st.header("Request a Courier")
+    st.write("Please fill in the details below to request a courier pickup.")
+
+    # Form layout
+    with st.form(key='courier_request_form'):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            receiver_name = st.text_input("Receiver Name")
+            receiver_phone = st.text_input("Receiver Phone")
+            package_weight = st.number_input("Package Weight (kg)", min_value=0.1, step=0.1)
+
+        with col2:
+            package_type = st.selectbox("Package Type", ["Document", "Box", "Fragile", "Other"])
+            pickup_date = st.date_input("Preferred Pickup Date")
+            
+        delivery_address = st.text_area("Full Delivery Address")
+        special_instructions = st.text_area("Special Instructions (Optional)")
+
+        # Submit button
+        submit_button = st.form_submit_button(label='Submit Request')
+
+    if submit_button:
+        if not receiver_name or not delivery_address:
+            st.error("Please fill in all required fields (Name and Address).")
+        else:
+            # Burası ileride veritabanı (MySQL) bağlantısı yapacağın kısım
+            st.success(f"Courier request created successfully for {receiver_name}!")
+            st.info("Your tracking number will be generated once the courier arrives.")
+            
+            # Form verilerini kontrol etmek için (Opsiyonel)
+            # st.write(f"Details: {package_type}, {package_weight}kg to {delivery_address}")
